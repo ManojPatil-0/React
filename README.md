@@ -1,1 +1,1 @@
-This is react pracitce code
+This is react practice code
