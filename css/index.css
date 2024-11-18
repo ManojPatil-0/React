@@ -24,6 +24,7 @@
 .item-list{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card-list > img {
@@ -37,13 +38,42 @@
     border: 1px solid black;
 }
 
-.filter{
-    margin-top: 20px;
-}
-
-.filter .btn {
+.btn {
     margin-top : 20px;
     padding: 5px;
     width: 100px;
     height: 30px;
+}
+
+.btn-login {
+    padding: 0 20px;
+    margin-left: 5px;
+    height: 30px;
+}
+
+.search{
+    margin-top: 30px;
+    padding: 30px;
+    width: 50%;
+}
+
+.search-filter{
+    display: inline-flex;
+    align-items: baseline;
+    width: 100%;
+    justify-content: center;
+}
+
+#search {
+    padding: 5px;
+    width: 50%;
+    margin-right: 20px;
+}
+
+.filter .btn {
+    float: right;
+}
+
+.filter {
+    width: 40%;
 }

@@ -13,9 +13,11 @@ const Head = () =>{
                     <ul>About Us</ul>
                     <ul>Contact Us</ul>
                     <ul>Cart</ul>
-                    <button className="btn-login" onClick={ () => {
-                        btnname === "Login" ? setbtname("Logout") : setbtname("Login");
-                    } }>{btnname}</button>
+                    <ul>
+                        <button className="btn-login" onClick={ () => {
+                            btnname === "Login" ? setbtname("Logout") : setbtname("Login");
+                        } }>{btnname}</button>
+                    </ul>
                 </li>
             </div>
         </div>
