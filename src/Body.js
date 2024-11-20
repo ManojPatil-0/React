@@ -1,11 +1,13 @@
 import Cards from "./Cards";
 import { useState, useEffect } from "react";
 import { REST_DATA } from "../Utils/data";
+import { Link } from "react-router-dom";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
     let apidatas = REST_DATA.data.cards[1].card.card.gridElements.infoWithStyle.restaurants ;
     
-    const [itemofcards,setitemofcards] = useState(apidatas)
+    const [itemofcards,setitemofcards] = useState(null)
     const [searchText, setsearchText] = useState("");
     const [filteredapi, setfilteredapi] = useState([]);
 
@@ -18,7 +20,7 @@ const Body = () => {
         setfilteredapi(jsondata.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
     }
 
-    return (
+    return itemofcards === null ? <Shimmer /> : (
         <div className="body-container" >
             <div className="search-filter">
                 <div className="search">
@@ -43,7 +45,7 @@ const Body = () => {
             <div className="item-list">
                 {
                     filteredapi.map((result) => {
-                        return <Cards key = {result.info.id} itemdata = {result.info}/>
+                        return <Link to = {"/menu/"+result.info.id} key = {result.info.id} > <Cards itemdata = {result.info}/></Link> 
                     })
                 }
             </div>

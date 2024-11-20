@@ -1,5 +1,7 @@
 import { MAIN_LOGO } from "../Utils/constant";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 const Head = () =>{
     const [btnname,setbtname] = useState('Login')
     return (
@@ -8,17 +10,17 @@ const Head = () =>{
                 <img src = {MAIN_LOGO} ></img>
             </div>
             <div className="menu-list">
-                <li>
-                    <ul>Home</ul>
-                    <ul>About Us</ul>
-                    <ul>Contact Us</ul>
-                    <ul>Cart</ul>
-                    <ul>
+                <ul>
+                    <li><Link to="/">Home</Link> </li>
+                    <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/contact">Contact Us</Link></li>
+                    <li>Cart</li>
+                    <li>
                         <button className="btn-login" onClick={ () => {
                             btnname === "Login" ? setbtname("Logout") : setbtname("Login");
                         } }>{btnname}</button>
-                    </ul>
-                </li>
+                    </li>
+                </ul>
             </div>
         </div>
     )

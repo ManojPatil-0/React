@@ -2,12 +2,13 @@ import { CARD_LOGO } from "../Utils/constant";
 
 const Cards = (props) => {
     const {itemdata} = props;
-    const{name,avgRating,costForTwo} = itemdata
+    const{name,avgRating,costForTwo,cloudinaryImageId
+    } = itemdata
 
     return (
         <div className="cards-container">
              <div className="card-list">
-                <img src= {CARD_LOGO} />
+                <img src= {CARD_LOGO+cloudinaryImageId} />
                 <h3>{name}</h3>
                 <h3>{avgRating}</h3>
                 <h3>{costForTwo}</h3>
