@@ -19,14 +19,14 @@ const Body = () => {
         setitemofcards(jsondata.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
         setfilteredapi(jsondata.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
     }
-
     return itemofcards === null ? <Shimmer /> : (
-        <div className="body-container" >
-            <div className="search-filter">
-                <div className="search">
+        <div className="mx-4 justify-items-center">
+            <div className="flex justify-between my-4 w-[86%]  border-solid border-2 p-5 rounded-md">
+                <div className="w-[70%]">
                     <input type="text" id = "search" value={searchText} 
-                    onChange={ (e) => setsearchText(e.target.value) } />
-                    <button className="btn" onClick={ () =>{
+                    onChange={ (e) => setsearchText(e.target.value) } 
+                    className="border-solid border-2 border-sky-600 w-[40%] p-1"/>
+                    <button className="mx-5 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded" onClick={ () =>{
                         //console.log(searchText);
                         const filterdata =itemofcards.filter(
                             (result) => {
@@ -36,13 +36,13 @@ const Body = () => {
                         setfilteredapi(filterdata);
                     } }>search</button>
                 </div>
-                <div className="filter">
-                    <button type="button" className="btn" onClick={ () => {
+                <div className="w-[30%]">
+                    <button type="button" className="float-end bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded" onClick={ () => {
                         setfilteredapi(filteredapi.filter( (res) => res.info.avgRating > 4.5 ) )
                     } } >Filter</button>
                 </div>
             </div>
-            <div className="item-list">
+            <div className="flex flex-wrap justify-center">
                 {
                     filteredapi.map((result) => {
                         return <Link to = {"/menu/"+result.info.id} key = {result.info.id} > <Cards itemdata = {result.info}/></Link> 

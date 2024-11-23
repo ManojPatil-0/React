@@ -1,16 +1,20 @@
-import React from "react";
+import React,{lazy,Suspense} from "react";
 import ReactDOM from "react-dom/client"
 import Head from "./Head";
 import Body from "./Body";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import About from "./About";
+//import About from "./About";
 import Error from "./Error";
 import Contact from "./Contact";
 import { Outlet } from "react-router-dom";
 import Menulist from "./Menulist";
+//import AboutClass from "./AboutClass";
+import useOnlineStatus from "../Utils/useOnlineStatus";
+const About = lazy( ()=> import("./About") ); //lazy loading
 
 const Applayout = () =>{
-    return (
+    const Internet = useOnlineStatus();
+    return Internet === false ? "No Internet, Please check your connections !" :  (
         <div className="container-fluid">
             <Head />
             <Outlet />
@@ -31,7 +35,9 @@ const appRouter = createBrowserRouter([
             },
             {
                 path : "/about",
-                element : <About />
+                element : <Suspense fallback = {<h1>Loading...</h1>} >
+                            <About /> 
+                          </Suspense>
             },
             {
                 path : "/contact",
@@ -46,6 +52,7 @@ const appRouter = createBrowserRouter([
     }
 
 ]);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router = {appRouter} /> );
