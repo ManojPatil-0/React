@@ -10,6 +10,7 @@ import { Outlet } from "react-router-dom";
 import Menulist from "./Menulist";
 //import AboutClass from "./AboutClass";
 import useOnlineStatus from "../Utils/useOnlineStatus";
+import Acmaster from "./Acmaster";
 const About = lazy( ()=> import("./About") ); //lazy loading
 
 const Applayout = () =>{
@@ -41,7 +42,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path : "/contact",
-                element :  <Contact />
+                element :  <Acmaster />
             },
             {
                 path : "/menu/:id",

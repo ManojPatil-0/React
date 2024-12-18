@@ -12,7 +12,6 @@ const useFetchApi = ( url) => {
         const jsondata = await fetchapi.json();
         setinfodata(jsondata.data);
     }
-    console.log(infodata);
     return infodata;
 }
 
