@@ -12,13 +12,18 @@ import Menulist from "./Menulist";
 import useOnlineStatus from "../Utils/useOnlineStatus";
 import Acmaster from "./Acmaster";
 const About = lazy( ()=> import("./About") ); //lazy loading
+import { Provider } from "react-redux";
+import appStore from "../Utils/Appstore";
+import Cart from "./Cart";
 
 const Applayout = () =>{
     const Internet = useOnlineStatus();
     return Internet === false ? "No Internet, Please check your connections !" :  (
         <div className="container-fluid">
-            <Head />
-            <Outlet />
+            <Provider store = {appStore} >
+                <Head />
+                <Outlet />
+            </Provider>
         </div>
 
     )
@@ -47,6 +52,10 @@ const appRouter = createBrowserRouter([
             {
                 path : "/menu/:id",
                 element : <Menulist />
+            },
+            {
+                path : "/cart",
+                element : <Cart />
             }
         ],
         errorElement : <Error />
